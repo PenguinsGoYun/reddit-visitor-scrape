@@ -35,11 +35,11 @@ if __name__ == "__main__":
     local_time = time.asctime(time.localtime(time.time()))
 
     # Use RegEx to scrape online visitor count from HTML of specified subreddit
-    currently_viewing = re.search('(?<=\"currentlyViewingCount\":)\d+', response.text)
+    currently_viewing = re.search(r'(?<=\"currentlyViewingCount\":)\d+', response.text)
     currently_viewing = int(currently_viewing.group(0))
 
     # Store information in external file based on 
-    f = open("data/" + SUBREDDIT[2:] + ".txt", "a")
+    f = open(SUBREDDIT[2:] + ".txt", "a")
     f.write(local_time + "\n")
     f.write(str(currently_viewing) + "\n")
     f.close()
